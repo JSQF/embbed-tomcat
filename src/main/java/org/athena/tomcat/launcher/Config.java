@@ -37,8 +37,9 @@ public abstract class Config {
 	protected static void initProject() throws Exception {
 		projectHome = System.getProperty("project.home");
 		if (projectHome == null){
-			System.setProperty("project.home", CURRENT_DIR);
-			projectHome = CURRENT_DIR;
+			File file = new File(CURRENT_DIR);
+			System.setProperty("project.home", file.getAbsolutePath());
+			projectHome = file.getAbsolutePath();
 		}
 		
 		projectName = System.getProperty("project.name", "WEB");
