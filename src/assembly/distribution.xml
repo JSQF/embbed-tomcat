@@ -1,0 +1,40 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/component/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/component/1.1.2 http://maven.apache.org/xsd/component-1.1.2.xsd ">
+
+
+	<id>${timestamp}</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<fileSets>
+		<fileSet>
+			<directory>${basedir}/bin</directory>
+			<fileMode>755</fileMode>
+			<lineEnding>unix</lineEnding>
+			<excludes>
+				<exclude>*.bat</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>${basedir}/target</directory>
+			<includes>
+				<include>${artifactId}-${version}.jar</include>
+			</includes>
+			<outputDirectory>webapp/WEB-INF/lib</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>${basedir}/conf</directory>
+		</fileSet>
+		<fileSet>
+			<directory>${basedir}/webapp</directory>
+		</fileSet>
+	</fileSets>
+
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>webapp/WEB-INF/lib</outputDirectory>
+		</dependencySet>
+	</dependencySets>
+</assembly>
